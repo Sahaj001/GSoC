@@ -1,0 +1,48 @@
+/*
+Hello mentors,
+	My name is Sahaj Pratap Singh, a 3rd year student pursuing B.Tech in Computer Science and Engineering at National Institute of Technology Silchar, India.
+	I want to apply at MBDyn for GSoC 2021, and I think this organization would be best for me. I have keen interest in Physics from an early age. I got little late in finding this orgzanization but I plan to give my best.
+	As for the Step 1 : first contact,
+		I already had Ubuntu in my Mac. I use dual boot for Ubuntu. I followed the Entry-Test.md file , downloaded MBDyn and compiled it, and also made sure all the required dependecies has been met before compiling.I created an build tree pointing to source code , build and installed it as before. Then I learned the basic syntax for input file from https://www.sky-engin.jp/en/MBDynTutorial and https://www.mbdyn.org/?Documentation___Official_Documentation___Examples. Then I wrote a test case and ran it. It then successfully executed and created some output files. For visualization I used gluplot on .mov output file.
+		I used a single dynamic node and gave the node 2m/s on Z-axis, and 3m/s on Y-axis. I gave gravity value of 9.81 in negative Z-axis. As for any difficulties I didn't face any there were some dependencies issues which were easy to tackle.
+	
+	Please review my work and guide me.I'll be looking forward for your instructions.
+*/
+
+# Input file as a test case 
+
+#	Every data block is surrounded by the control
+#	statements begin and end:
+#	begin : <block_name> ;
+#		 block content
+#	end : <block_name> ;
+
+begin: data;
+   problem: initial value;
+end: data;
+ 
+begin: initial value;
+   initial time: 0.;
+   final time: 1.;
+   time step: 1.e-3;
+   max iterations: 10;
+   tolerance: 1.e-6;
+end: initial value;
+ 
+begin: control data;
+   structural nodes: 1;
+   rigid bodies: 1;
+   gravity;
+end: control data;
+ 
+begin: nodes;
+   structural: 1, dynamic, null, eye, 0., 3., 4., null;
+end: nodes;
+ 
+begin: elements;
+   body: 1, 1, 1., null, eye;
+   gravity: 0., 0., -1., const, 9.81;
+end: elements;
+
+
+
