@@ -1,0 +1,40 @@
+# Input file as a test case for Step 2 
+
+#	Every data block is surrounded by the control
+#	statements begin and end:
+#	begin : <block_name> ;
+#		 block content
+#	end : <block_name> ;
+
+begin: data;
+   problem: initial value;
+end: data;
+
+begin: initial value;
+   initial time: 0.;
+   final time: 4.;
+   time step: 1.e-3;
+   max iterations: 10;
+   tolerance: 1.e-6;
+end: initial value;
+
+begin: control data;
+   structural nodes : +3;
+   rigid bodies : +3;
+   gravity;
+end: control data;
+
+begin: nodes;
+      structural : 1, dynamic, null, eye, 4.,0.,3., null;
+      structural : 2, dynamic, null, eye, 0.,4.,3., null;
+      structural : 3, dynamic, null, eye, 4.,4.,3., null;
+end: nodes;
+
+begin: elements;
+   body: 1, 1, 1., null, eye;
+   body: 2, 2, 2., null, eye;
+   body: 3, 3, 3., null, eye;
+   gravity: 0., 0., -1., const, 10;
+   
+end: elements;
+
